@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>J.A.R.V.I.S Code Bundle</title>
+<style>
+:root{--bg:#070715;--panel:#12122d;--line:rgba(0,217,255,.35);--text:#e9eefc;--dim:#9aa7c7;--cyan:#00d9ff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 10%,#272061,transparent 34%),var(--bg);color:var(--text);font-family:Segoe UI,system-ui,sans-serif;padding:28px}.hero,.card{max-width:1100px;margin:0 auto 18px;border:1px solid var(--line);border-radius:22px;background:rgba(18,18,45,.82);box-shadow:0 20px 70px rgba(0,0,0,.35)}.hero{padding:26px}h1{margin:0 0 10px;font-size:clamp(32px,6vw,64px)}h1 span,h2{color:var(--cyan)}p{color:var(--dim);font-size:17px;line-height:1.55}.actions,.head{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}.head{padding:14px 16px;border-bottom:1px solid var(--line)}button{border:0;border-radius:12px;padding:12px 16px;background:linear-gradient(135deg,#7c3aed,#0284c7);color:white;font-weight:800;cursor:pointer}textarea{width:100%;height:360px;border:0;outline:0;resize:vertical;background:#080a18;color:#d7f7ff;padding:18px;font:13px/1.55 Consolas,Monaco,monospace}.toast{position:fixed;right:20px;bottom:20px;background:#122e24;border:1px solid #10b981;color:#bbf7d0;padding:12px 16px;border-radius:12px;display:none}.toast.show{display:block}
+</style>
+</head>
+<body>
+<section class="hero">
+  <h1>J.A.R.V.I.S <span>Code Bundle</span></h1>
+  <p>Bro, is single file ko browser mein open karo. Neeche complete starter code mil jayega. Buttons se copy/download kar lo, phir files bana ke run karo.</p>
+  <div class="actions"><button onclick="copyAll()">Copy All Code</button><button onclick="downloadAll()">Download All Code JSON</button></div>
+</section>
+<section class="card"><div class="head"><h2>index.html</h2><button onclick="copyCode('index')">Copy</button></div><textarea id="index" readonly><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J.A.R.V.I.S Voice Core</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+  <main class="shell">
+    <section class="hero glass">
+      <p class="eyebrow">Ultra AI Assistant v10.1</p>
+      <h1>J.A.R.V.I.S <span>Voice Core</span></h1>
+      <p class="subtitle">Hands-free mode keeps listening until you switch it off.</p>
+      <div class="orb" id="micOrb" onclick="toggleAlwaysListening()"><div class="ring"></div><div class="core" id="micIcon">🎙️</div></div>
+      <button class="primary" id="alwaysBtn" onclick="toggleAlwaysListening()">Turn Always Listening On</button>
+      <div class="status" id="statusTxt">Ready</div>
+      <div class="transcript" id="transcriptTxt">Say: “Jarvis, today best 10 information”</div>
+      <div class="answer" id="aiPanel">Neural core online.</div>
+      <div class="controls">
+        <select id="languageSelect" onchange="setLanguage(this.value)"></select>
+        <input id="mainInput" placeholder="Optional typing fallback" onkeydown="if(event.key==='Enter')sendCmd()" />
+        <button onclick="sendCmd()">Send</button>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html></textarea></section>
+<section class="card"><div class="head"><h2>style.css</h2><button onclick="copyCode('css')">Copy</button></div><textarea id="css" readonly>:root{--bg:#070715;--panel:rgba(18,18,44,.72);--line:rgba(124,58,237,.35);--cyan:#00d9ff;--purple:#9d6ef7;--text:#e9eefc;--dim:#8b97b8;--green:#10b981}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 10%,#272061 0,transparent 32%),var(--bg);color:var(--text);font-family:Segoe UI,system-ui,sans-serif}.shell{min-height:100vh;display:grid;place-items:center;padding:28px}.glass{border:1px solid var(--line);background:var(--panel);backdrop-filter:blur(22px);border-radius:28px}.hero{text-align:center;padding:34px;max-width:900px}.eyebrow{color:var(--cyan);letter-spacing:.28em;text-transform:uppercase}h1{font-size:clamp(44px,8vw,88px);line-height:.95;margin:12px 0}h1 span{display:block;color:var(--cyan)}.subtitle{color:var(--dim)}.orb{position:relative;width:220px;height:220px;margin:28px auto;display:grid;place-items:center;cursor:pointer}.ring{position:absolute;inset:0;border:1px solid rgba(0,217,255,.35);border-radius:50%;animation:pulse 2.5s infinite}.core{width:145px;height:145px;border-radius:50%;display:grid;place-items:center;font-size:54px;background:radial-gradient(circle at 35% 30%,#b986ff,#395dff 60%,#0ed9ff);box-shadow:0 0 55px rgba(124,58,237,.75)}.listening .core{background:radial-gradient(circle,#ff7b7b,#ef4444);animation:beat .8s infinite}.primary,.controls button{border:0;border-radius:14px;padding:12px 18px;background:linear-gradient(135deg,#7c3aed,#0284c7);color:white;font-weight:800}.status{margin:14px;color:var(--green)}.transcript,.answer{padding:16px;border-radius:18px;margin:8px;border:1px solid var(--line);background:rgba(0,0,0,.22);text-align:left}.answer{min-height:110px;white-space:pre-wrap}.controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px}.controls select,.controls input{border:1px solid var(--line);background:#11132b;color:var(--text);padding:12px;border-radius:14px}@keyframes pulse{to{transform:scale(1.18);opacity:0}}@keyframes beat{50%{transform:scale(1.07)}}</textarea></section>
+<section class="card"><div class="head"><h2>app.js</h2><button onclick="copyCode('js')">Copy</button></div><textarea id="js" readonly>"use strict";
+const API_BASE = window.location.origin;
+const SESSION_ID = "user_" + Math.random().toString(36).slice(2);
+const LANGUAGES = {"en-US":"English","hi-IN":"Hindi","en-GB":"UK English","es-ES":"Spanish","fr-FR":"French","de-DE":"German","ja-JP":"Japanese","zh-CN":"Chinese","ar-SA":"Arabic","pt-BR":"Portuguese"};
+let currentLang="en-US", alwaysListening=false, recognition=null, recognizing=false, voices=[];
+window.addEventListener("DOMContentLoaded",()=>{languageSelect.innerHTML=Object.entries(LANGUAGES).map(([c,l])=>`<option value="${c}">${l}</option>`).join("");loadVoices();});
+function loadVoices(){voices=speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>voices=speechSynthesis.getVoices();}
+function setLanguage(v){currentLang=v;respond(`Language changed to ${LANGUAGES[v]}.`)}
+function toggleAlwaysListening(){alwaysListening=!alwaysListening;alwaysBtn.textContent=alwaysListening?"Turn Always Listening Off":"Turn Always Listening On";micOrb.classList.toggle("listening",alwaysListening);micIcon.textContent=alwaysListening?"🛑":"🎙️";if(alwaysListening)startRecognitionLoop();else stopRecognition();}
+function startRecognitionLoop(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){respond("Use Chrome or Edge for voice recognition.");return}if(recognizing)return;recognition=new SR();recognition.lang=currentLang;recognition.continuous=true;recognition.interimResults=true;recognition.onstart=()=>{recognizing=true;statusTxt.textContent="Listening continuously..."};recognition.onresult=e=>{let text="";for(let i=e.resultIndex;i<e.results.length;i++){if(e.results[i].isFinal)text+=e.results[i][0].transcript}text=text.trim().replace(/^(hey\s+)?jarvis[,\s]*/i,"");if(text)runCmd(text)};recognition.onend=()=>{recognizing=false;if(alwaysListening)setTimeout(startRecognitionLoop,300)};recognition.start();}
+function stopRecognition(){if(recognition)try{recognition.stop()}catch{}recognizing=false;statusTxt.textContent="Ready"}
+async function runCmd(text){transcriptTxt.textContent=text;statusTxt.textContent="Processing...";try{const r=await fetch(`${API_BASE}/api/command`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text,session_id:SESSION_ID,language:currentLang})});const d=await r.json();respond(d.msg||"Done");if(d.url)window.open(d.url,"_blank")}catch{respond("Backend not running. Start with: python main.py")}}
+function sendCmd(){const text=mainInput.value.trim();mainInput.value="";if(text)runCmd(text)}
+function respond(msg){aiPanel.textContent=msg;speak(msg);statusTxt.textContent=alwaysListening?"Listening continuously...":"Done"}
+function speak(text){if(!speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=currentLang;u.rate=1.02;u.pitch=.96;u.voice=pickVoice();speechSynthesis.speak(u)}
+function pickVoice(){const base=currentLang.split("-")[0].toLowerCase();const same=voices.filter(v=>v.lang&&v.lang.toLowerCase().startsWith(base));return same.find(v=>/natural|neural|google|microsoft|samantha|zira|aria|alex/i.test(v.name))||same[0]||voices[0]||null}</textarea></section>
+<section class="card"><div class="head"><h2>main.py</h2><button onclick="copyCode('py')">Copy</button></div><textarea id="py" readonly>import datetime as dt, os, platform, re, subprocess, urllib.parse, webbrowser
+from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
+app=Flask(__name__,static_folder=".",static_url_path=""); CORS(app)
+OS_NAME=platform.system()
+WEBSITES={"youtube":"https://youtube.com","google":"https://google.com","chatgpt":"https://chatgpt.com","github":"https://github.com","whatsapp":"https://web.whatsapp.com"}
+APPS={"calculator":["calc.exe"],"notepad":["notepad.exe"],"paint":["mspaint.exe"],"cmd":["cmd.exe"],"terminal":["wt.exe","cmd.exe"],"chrome":["chrome"],"vs code":["code"]}
+INFO=["AI tools and breakthroughs","cybersecurity and privacy tips","space science updates","developer releases","health and productivity research","EV and energy innovation","finance and startup trends","education resources","gaming and creator economy","global technology policy"]
+def speak(msg,**extra):
+    data={"action":"speak","msg":msg}; data.update(extra); return data
+def open_app(name):
+    for cmd in APPS.get(name,[]):
+        try: subprocess.Popen(cmd,shell=True); return f"Launching {name}."
+        except Exception: pass
+    return f"Could not launch {name}."
+def process(text):
+    t=text.lower().strip()
+    if "time" in t or "kitna baja" in t: return speak("Current time is "+dt.datetime.now().strftime("%I:%M %p"))
+    if "date" in t or "aaj" in t: return speak("Today is "+dt.datetime.now().strftime("%A, %B %d, %Y"))
+    m=re.search(r"(\d+)\s+(information|info|news|updates)",t)
+    if m or "best information" in t:
+        n=max(1,min(int(m.group(1)) if m else 10,50)); items=(INFO*((n//len(INFO))+1))[:n]
+        return speak("Here are the best information topics today:\n"+"\n".join(f"{i+1}. {x}." for i,x in enumerate(items)))
+    om=re.search(r"(open|launch|kholo|start)\s+(.+)",t)
+    if om:
+        name=re.sub(r"\s*(app|website|site)$","",om.group(2)).strip()
+        if name in WEBSITES: return speak(f"Opening {name}.",url=WEBSITES[name],name=name)
+        if name in APPS: return speak(open_app(name))
+        return speak(f"Searching for {name}.",url="https://google.com/search?q="+urllib.parse.quote(name),name=name)
+    return speak("AI mode ready. Add GROQ_API_KEY integration for full online answers.")
+@app.route("/")
+def index(): return send_from_directory(".","index.html")
+@app.post("/api/command")
+def command():
+    data=request.get_json(silent=True) or {}; text=data.get("text","")
+    if not text.strip(): return jsonify({"error":"No command"}),400
+    return jsonify(process(text))
+if __name__=="__main__":
+    webbrowser.open("http://localhost:5000"); app.run(host="0.0.0.0",port=5000,threaded=True)</textarea></section>
+<section class="card"><div class="head"><h2>requirements.txt</h2><button onclick="copyCode('req')">Copy</button></div><textarea id="req" readonly>flask
+flask-cors</textarea></section>
+<div class="toast" id="toast">Copied!</div>
+<script>
+function getAll(){return ['index','css','js','py','req'].map(id=>'===== '+document.querySelector(`button[onclick="copyCode(\'${id}\')"]`)?.closest('.card')?.querySelector('h2')?.textContent+' =====\n'+document.getElementById(id).value).join('\n\n')}
+function show(msg){toast.textContent=msg;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}
+async function copyCode(id){await navigator.clipboard.writeText(document.getElementById(id).value);show('Copied')}
+async function copyAll(){await navigator.clipboard.writeText(getAll());show('All code copied')}
+function downloadAll(){const blob=new Blob([getAll()],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jarvis-all-code.txt';a.click();URL.revokeObjectURL(a.href)}
+</script>
+</body>
+</html>
